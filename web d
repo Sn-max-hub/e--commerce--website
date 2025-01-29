@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color:#eef2f3;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #00334e, #005f73);
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .navbar .heading h1 {
+            color: #fff;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        .navbar .account {
+            color: black;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .account a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .navbar .account a:hover {
+            color: #f2a900;
+        }
+
+        .options {
+            background-color: #054b61;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .options i {
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .options i:hover {
+            color: #f2a900;
+        }
+
+        .options .search {
+            display: flex;
+            align-items: center;
+            width: 60%; /* Increased width */
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .options .search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 25px;
+        }
+
+        .options .search .fa-magnifying-glass {
+            margin-left: 10px;
+            color: #042630;
+        }
+
+        .options .icon {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            width: 60px; 
+            height: 60px; 
+            transition: background-color 0.3s ease;
+        }
+
+        .options .icon:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .options .icon p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .herosection {
+    position: relative;
+    width: 100%;
+    height: 400px;  /* Adjust height as needed */
+    overflow: hidden;
+}
+
+.heroimage {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);  /* Dark overlay to make text stand out */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.hero-overlay p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    background-color: #f2a900;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #d18b00;
+}
+
+        .moving-bar {
+               background-color: #00334e;
+               white-space: nowrap;
+               display:flex;
+               justify-content: space-evenly;
+               align-items: center;
+               height:40px;
+
+        }
+        .moving-bar a{
+            color:#fff;
+            text-decoration: none;
+            animation:move-text 20s linear infinite;
+        }
+        @keyframes move-text{
+            0% {
+        transform: translateX(100vw); 
+      }
+      100% {
+        transform: translateX(-100%); 
+      }
+      }
+      .main-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .main-section h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+        }
+        .images a{
+            text-decoration: none;
+            color:black;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .box-img {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box-title  {
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .supplies,.tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .supply,.caretips {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+            background-color: #fff;
+        }
+
+        .supply:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .caretips:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .supply-img,.tip-img {
+            height: 150px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .supply-title,.tip-title {
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+            background-color: #f9f9f9;
+            width: 100%;
+        }
+        
+        .foot-panel {
+            background-color: #1b2735;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px ;
+            margin-top: 20px;
+        }
+
+        .foot-panel ul {
+            list-style: none;
+        }
+
+        .foot-panel ul b {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .foot-panel ul a {
+            display: block;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 10px;
+            text-decoration: none;
+            transition: none; 
+        }
+        .foot-panel ul a:hover{
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color:#f2a900;
+        }
+
+        .ending-bar {
+            background-color: #1b2735;
+            border-top: 1px solid white;
+            color: #ccc;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 0.9rem;
+            padding: 15px 0;
+        }
+
+        .ending-bar a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: text-decoration 0.3s ease, color 0.3s ease;
+        }
+
+        .ending-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+            padding: 10px 0;
+            background-color: #1b2735;
+            border-top: 0.5px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="heading">
+            <h1>SHINE</h1>
+        </div>
+        <div class="account">
+            <a href="#" class="login" title="Login to your account">Login</a> |
+            <a href="#" class="signup" title="Create your account">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="options">
+        <div class="icon home" title="Home">
+            <i class="fa-solid fa-bars"></i>
+            <p>Home</p>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search for Products">
+            <i class="fa-solid fa-magnifying-glass" title="Search"></i>
+        </div>
+        <div class="icon user" title="Account">
+            <i class="fa-solid fa-user"></i>
+            <p>Account</p>
+        </div>
+        <div class="icon wishlist" title="Wishlist">
+            <i class="fa-solid fa-heart"></i>
+            <p>Wishlist</p>
+        </div>
+        <div class="icon cart" title="Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Cart</p>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="herosection">
+        <div class="heroimage" style="background-image: url('https://img.freepik.com/free-photo/wonderful-european-female-model-chilling-with-puppy-indoor-portrait-debonair-girl-enjoying-portraitshoot-with-her-cute-pet_197531-11031.jpg');">
+            <div class="hero-overlay">
+                <h2>Welcome to Shine</h2>
+                <p>Your one-stop solution for all pet needs</p>
+                <a href="#C1" class="hero-btn">Explore Now</a>
+            </div>
+        </div>
+    </div>
+    
+     <div class="moving-bar">
+        <a href="#C1">Adopt a Pet</a>   
+        <a href="#C2">Pet supplies</a>   
+        <a href="#C3">Pet Care Tips</a>
+     </div>
+     <div class="main-section">
+        <h2 id="C1">Adopt a Pet</h2>
+    </div>
+    
+    <div class="images">
+        <a href="/dogs.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg');"></div>
+            <h3 class="box-title">Dogs</h3>
+        </div>
+        </a>
+        <a href="/cats.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStOj-nTCmPne41wl0NTC9FqHnS3V4myM6Am-YX0bQtfsBjaFsGL2NsnGIFOXT2kKhnHQA&usqp=CAU');"></div>
+            <h3 class="box-title">Cats</h3>
+            </div>
+          </a>
+            <a href="/rabbits.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://twinmaplesvethospital.com/wp-content/uploads/2023/01/Exotic-Pets-img.jpg');"></div>
+            <h3 class="box-title">Rabbits</h3>
+        </div>
+        </a>
+        <a href="/fishes.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://images.pexels.com/photos/3220368/pexels-photo-3220368.jpeg');"></div>
+            <h3 class="box-title">Fishes</h3>
+        </div>
+        </a>
+        <a href="/birds.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://www.thesprucepets.com/thmb/r23RBk0t4DC9UHp2pTzuXLz7Jj4=/3600x0/filters:no_upscale():strip_icc()/popular-small-bird-species-390926-hero-d3d0af7bb6ed4947b0c3c5afb4784456.jpg');"></div>
+            <h3 class="box-title">Birds</h3>
+        </div>
+        </a>
+        <a href="/butterflies.html" target="_blank">
+        <div class="box">
+            <div class="box-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2mulAbir4ixhKIerfx1MAPAiZhV8Jy5HY5Q&s');"></div>
+            <h3 class="box-title">Butterflies</h3>
+        </div>
+        </a>
+    </div>
+    <div class="main-section">
+        <h2 id="C2">Pet Supplies</h2>
+    </div>
+    <section class="supplies">
+        <div class="supply">
+            <div class="supply-img" style="background-image: url('https://fidele.co/cdn/shop/articles/top-view-pet-accessories_4100x.jpg?v=1733915343');"></div>
+            <div class="supply-title">Food</div>
+        </div>
+        <div class="supply">
+            <div class="supply-img" style="background-image: url('https://i.etsystatic.com/32237713/r/il/635ba0/5222288034/il_fullxfull.5222288034_oi7f.jpg');"></div>
+            <h3 class="supply-title">Belts</div>
+        </div>
+        <div class="supply">
+            <div class="supply-img" style="background-image: url('https://m.media-amazon.com/images/I/41GqBU3YnpL._AC_.jpg');"></div>
+            <div class="supply-title">Pet Bowls</div>
+        </div>
+        <div class="supply">
+            <div class="supply-img" style="background-image: url('https://t4.ftcdn.net/jpg/09/79/64/81/360_F_979648153_A7JfpcwSZODWtExqATF3ZhDwkxs8WTa5.jpg');"></div>
+            <div class="supply-title">Cage</div>
+        </div>
+    </section>
+    <div class="main-section">
+        <h2 id="C3">Pet Care Tips</h2>
+    </div>
+    <section class="tips">
+        <div class="caretips">
+            <div class="tip-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw92igyxQ6Ce-YkjzTDZHqrXzf2t6if5odbw&s');"></div>
+            <div class="tip-title">Medicines</div>
+        </div>
+        <div class="caretips">
+            <div class="tip-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShFZDwJSMzgWGvGmMbh2B5Ak2txDVcL4b1mQ&s');"></div>
+            <h3 class="tip-title">Vaccines</div>
+        </div>
+        <div class="caretips">
+            <div class="tip-img" style="background-image: url('https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg');"></div>
+            <div class="tip-title">Consult a Vet</div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="foot-panel">
+        <ul>
+            <b>About SHINE</b>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Food</a>
+            <a href="#">Consult a vet</a>
+            <a href="#">Pharmacy</a>
+        </ul>
+        <ul>
+            <b>EXPLORE</b>
+            <a href="#">Our story</a>
+            <a href="#">FAQs</a>
+            <a href="#">Blog</a>
+            <a href="#">Events</a>
+        </ul>
+        <ul>
+            <b>QUICK LINKS</b>
+            <a href="#">My Account</a>
+            <a href="#">Track Your Order</a>
+            <a href="#">Refund Policy</a>
+            <a href="#">Return Policy</a>
+            <a href="#">Terms of Use</a>
+        </ul>
+        <ul>
+            <b>Follow Us</b>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/?lang=en" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://in.linkedin.com/" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </ul>
+    </div>
+    <div class="ending-bar">
+        <div class="links">
+            <a href="#" title="Rate Us">Rate Us</a>
+            <a href="#" title="Privacy Policy">Privacy</a>
+            <a href="#" title="Contact Us">Contact Us</a>
+            <a href="#" title="Help Center">Help</a>
+        </div>
+    </div>
+    <div class="copyright">
+        © 1997-2025, Shine.com, Inc. or its affiliates
+    </div>
+</footer>
+
+</body>
+</html>
